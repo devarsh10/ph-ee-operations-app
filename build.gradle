@@ -11,13 +11,17 @@ plugins {
 apply plugin: "io.spring.dependency-management"
 
 repositories {
+    mavenLocal()
     maven {
-        url = uri('https://repo.maven.apache.org/maven2')
+        url = uri('https://repo.maven.apache.org/maven2/')
     }
-
     maven {
-        url = uri('https://jfrog.sandbox.fynarfin.io/artifactory/fyn-libs-snapshot')
+        url = uri('https://mifos.jfrog.io/artifactory/phee-gradle-local')
+    }    
+    maven {
+        url = uri('https://mifos.jfrog.io/artifactory/mifosx-gradle-local')
     }
+    mavenCentral()
 }
 
 ext {
@@ -49,7 +53,8 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     implementation "org.springdoc:springdoc-openapi-ui:1.6.11"
-    implementation 'org.mifos:ph-ee-connector-common:1.4.1-SNAPSHOT'
+    // implementation 'org.mifos:ph-ee-connector-common:1.4.1-SNAPSHOT'
+    implementation 'org.mifos:ph-ee-connector-common:1.4.1-gazelle'
     implementation "org.springframework.boot:spring-boot-starter:$springBootVersion"
     implementation "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
     implementation "org.springframework.boot:spring-boot-starter-actuator:$springBootVersion"
